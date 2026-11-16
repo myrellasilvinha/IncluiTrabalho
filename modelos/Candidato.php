@@ -1,0 +1,55 @@
+<?php
+class Candidato{
+
+    private $id;
+    private $nome;
+    private $email;
+    private $senha;
+    private $telefone;
+    private $formatoCurriculo;
+
+    public function getId(){ 
+        return $this->id; }
+    public function setId($id){ 
+        $this->id = $id; }
+
+    public function getNome(){ 
+        return $this->nome; }
+    public function setNome($nome){ 
+        $this->nome = $nome; }
+
+    public function getEmail(){ 
+        return $this->email; }
+    public function setEmail($email){ 
+        $this->email = $email; }
+
+    public function getSenha(){ 
+        return $this->senha; }
+    public function setSenha($senha){ 
+        $this->senha = $senha; }
+
+    public function getTelefone(){ 
+        return $this->telefone; }
+    public function setTelefone($telefone){ 
+        $this->telefone = $telefone; }
+
+    public function getFormatoCurriculo(){ 
+        return $this->formatoCurriculo; }
+    public function setFormatoCurriculo($formatoCurriculo){
+        $this->formatoCurriculo = $formatoCurriculo;
+    }
+
+    /**
+     * Permite leitura das propriedades privadas como $candidato->id,
+     * mantendo compatibilidade com as telas e controladores.
+     */
+    public function __get($nome){
+        $metodo = 'get' . ucfirst($nome);
+        return method_exists($this, $metodo) ? $this->$metodo() : null;
+    }
+
+    public function __isset($nome){
+        return method_exists($this, 'get' . ucfirst($nome));
+    }
+}
+?>
